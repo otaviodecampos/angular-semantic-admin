@@ -1,0 +1,25 @@
+{
+  "name": "asa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "otaviodecampos <otaviodecampos@hotmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "^3.4.0",
+    "event-stream": "^3.3.1",
+    "gulp": "^3.9.0",
+    "gulp-angular-templatecache": "^1.7.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-context": "0.0.13",
+    "gulp-less": "^3.0.3",
+    "gulp-ng-json": "0.0.6",
+    "gulp-order": "^1.1.1",
+    "gulp-rename": "^1.2.2",
+    "semantic-ui": "^2.1.4",
+    "serve-static": "^1.10.0"
+  }
+}

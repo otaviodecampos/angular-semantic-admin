@@ -1,0 +1,194 @@
+/* sidebar.less */
+
+.portal {
+
+  &.sidebar-visible {
+
+    & .portal-sidebar {
+      bottom: 0;
+      height: auto;
+      overflow: visible;
+    }
+
+  }
+
+  &:not(.sidebar-open) {
+    & .item.sidebar-open:after {
+      display: none;
+    }
+  }
+
+  &:not(.sidebar-visible) {
+
+    & .portal-sidebar {
+
+      width: 0;
+
+      & > .ui.menu:before {
+        display: none;
+      }
+
+    }
+
+  }
+}
+
+.portal.sidebar-visible {
+  .portal-sidebar {
+    z-index: 7;
+  }
+}
+
+.portal-sidebar {
+  width: 48px;
+  position: fixed !important;
+  top: 0;
+  bottom: 0;
+  .animate-ease-out();
+
+  & > .ui.menu {
+    position: relative;
+    overflow-y: visible !important;
+    padding-top: 48px;
+
+    &:before {
+      width: 6px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      content: '';
+      background-image: linear-gradient(to right,rgba(0,0,0,.02) 0,rgba(0,0,0,.14) 60%,rgba(0,0,0,.2) 100%);
+      pointer-events: none;
+    }
+
+    &.vertical .item {
+
+      .menu.horizontal {
+        width: 144px !important;
+        position: absolute;
+        top: 0;
+        left: 48px;
+        border-radius: 0;
+        opacity: 0;
+        display: none;
+
+        & .item {
+          padding: .92857143em 1.14285714em;
+          width: 48px;
+          float: left;
+          z-index: 105;
+        }
+
+        &:after {
+          content: '';
+          width: .57142857em;
+          height: .57142857em;
+          border-bottom: 1px solid #d4d4d5;
+          border-right: 1px solid #d4d4d5;
+          z-index: 2;
+          -webkit-transition: background .1s ease;
+          transition: background .1s ease;
+          visibility: visible;
+          position: absolute;
+          top: 50%;
+          right: auto;
+          bottom: auto;
+          left: -8px;
+          -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
+          -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);
+          transform: translateX(50%) translateY(-50%) rotate(45deg);
+          border-top: 1px solid #d4d4d5;
+          border-right: 1px solid #d4d4d5;
+          background: #1B1C1D!important;
+          margin: 0!important;
+          box-shadow: none!important;
+          border: none!important;
+          z-index: 104;
+        }
+      }
+
+      &.open .menu.horizontal {
+        display: block;
+        opacity: 1;
+        .shadow();
+        .animate-fade-in();
+      }
+
+    }
+
+    .item {
+      -webkit-transform: initial;
+      transform: initial;
+
+      &.open, &.sidebar-open, &.open:hover {
+        background: #4285f4 !important;
+      }
+
+      &.sidebar-open:after {
+        content: '';
+        width: .57142857em;
+        height: .57142857em;
+        border-bottom: 1px solid #d4d4d5;
+        border-right: 1px solid #d4d4d5;
+        z-index: 2;
+        -webkit-transition: background .1s ease;
+        transition: background .1s ease;
+        visibility: visible;
+        position: absolute;
+        top: 50%;
+        right: -1px;
+        bottom: auto;
+        left: auto;
+        -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
+        -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);
+        transform: translateX(50%) translateY(-50%) rotate(45deg);
+        border-top: 1px solid #d4d4d5;
+        border-right: 1px solid #d4d4d5;
+        background: #fff !important;
+        margin: 0!important;
+        box-shadow: none!important;
+        border: none!important;
+        z-index: 104;
+      }
+    }
+
+  }
+
+  & .menu.icon {
+
+    & .item {
+      height: 48px;
+      font-size: 16px !important;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+
+  }
+
+  & .portal-sidebar-open {
+    width: 0;
+    position: absolute;
+    top: 48px;
+    bottom: 0;
+    left: 0px;
+    background-color: #fff;
+    overflow: hidden;
+    opacity: 0;
+    .animate-ease-out();
+  }
+
+}
+
+.portal.sidebar-open .portal-sidebar .portal-sidebar-open {
+    opacity: 1;
+    width: 240px;
+    left: 48px;
+    border-right: 1px solid #dedede;
+    overflow: visible;
+}
+
+.ui.inverted.menu {
+  background: #151515;
+}

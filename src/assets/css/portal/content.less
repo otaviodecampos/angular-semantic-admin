@@ -1,0 +1,28 @@
+/* content.less */
+
+.portal {
+
+  & .portal-content {
+    padding-top: 48px;
+    .animate-ease-out();
+    position: relative;
+    z-index: 5;
+    background-color: #e9e9e9;
+    margin-left: 0;
+  }
+
+  &.sidebar-visible {
+    & .portal-content {
+      margin-left: 48px;
+    }
+  }
+
+  &.sidebar-visible.sidebar-open {
+
+    & .portal-content {
+      margin-left: 288px;
+    }
+
+  }
+
+}

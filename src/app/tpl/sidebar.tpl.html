@@ -1,0 +1,15 @@
+<div class="admin-sidebar">
+    <div class="ui inverted fluid visible vertical sidebar static icon menu">
+        <a ng-click="item.$open()" ng-class="{'open': item.open, 'sidebar-open': item.templateUrl && item.open}" ng-repeat="item in sidebar.itens" ng-controller="SidebarItemController" class="item">
+            <i ng-class="item.icon" class="icon"></i>
+            <div ng-if="item.itens" class="ui inverted fluid icon link menu horizontal">
+                <div ng-repeat="item in item.itens" class="item">
+                    <i ng-class="item.icon" class="icon"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="admin-sidebar-open">
+        <div ng-include="sidebar.sidebarTemplateUrl"></div>
+    </div>
+</div>

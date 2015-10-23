@@ -1,0 +1,72 @@
+/* navbar.less */
+
+.portal-navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 48px;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px !important;
+  margin-left: 0;
+  background: #4285f4 !important;
+  border-radius: 0 !important;
+  padding: .92857143em 1.14285714em;
+  color: #fff;
+  z-index: 9;
+
+  .shadow();
+  .animate-ease-out();
+
+  &:before {
+    content: "\f0c9";
+    background: 0 0!important;
+    font-family: Icons;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    display: block;
+    padding: .99857143em 1.27285714em;
+    font-size: 1em;
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+
+    .animate-ease-out();
+  }
+
+  &:before:hover {
+    background: #000;
+  }
+}
+
+.portal {
+  &.sidebar-visible {
+    & .portal-navbar {
+      margin-left: 48px !important;
+      padding-left: 1.14285714em !important;
+
+      &:before {
+        -moz-transform: rotate(180deg) translateY(2px);
+        -webkit-transform: rotate(180deg) translateY(2px);
+        -o-transform: rotate(180deg) translateY(2px);
+        transform: rotate(180deg) translateY(2px);
+      }
+    }
+  }
+}
+
+.sidebar-switch {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  z-index: 10;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}

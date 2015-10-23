@@ -1,0 +1,29 @@
+{
+    "scope": {
+        "package-name": "asa",
+        "module-name": "asa",
+        "source-dir": "src",
+        "target-dir": "dist",
+        "paths": {
+			"assets": "/assets",
+            "style": "/assets/css",
+            "js": "/assets/js",
+            "vendor": "/vendor"
+        }
+    },
+    "context": {
+        "build": {
+			"default": true,
+            "clean": true,
+            "task-dir": "tasks",
+            "task": {
+                "build/concat": true,
+                "build/style": true,
+				"copy/html": true,
+                "copy/assets": true,
+                "vendor/concat": true,
+                "vendor/copy": true
+            }
+        }
+    }
+}
