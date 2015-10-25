@@ -7,3 +7,4 @@ vendor/
 .openshift
 demo/
 dist/
+dist-demo/

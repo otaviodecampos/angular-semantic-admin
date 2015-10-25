@@ -15,12 +15,12 @@
             "app": "dist",
             "assets": "dist",
             "fonts": "dist/fonts",
-            "demo": "demo"
+            "demo": "dist-demo"
         },
         "demo": {
-            "assets": "demo/assets",
-            "app": "demo/app",
-            "asadmin": "demo/vendor/asadmin"
+            "assets": "dist-demo/assets",
+            "app": "dist-demo/app",
+            "asadmin": "dist-demo/vendor/asadmin"
         }
     },
     "context": {
