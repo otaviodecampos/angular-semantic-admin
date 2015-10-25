@@ -3,13 +3,13 @@ var gulp = require('gulp')
 
 module.exports = function build() {
 
-    var input = this.input(this.sourceDir, [
-        'assets/**/*',
-        '!assets/css/**/*',
-        '!assets/css'
+    var input = this.input(this.source.assets, [
+        '**/*',
+        '!css/**/*',
+        '!css'
     ]);
 
     return gulp.src(input)
         .pipe(justfiles())
-        .pipe(gulp.dest(this.paths.target.assets));
+        .pipe(gulp.dest(this.target.assets));
 }

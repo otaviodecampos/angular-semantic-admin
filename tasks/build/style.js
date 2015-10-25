@@ -7,7 +7,7 @@ module.exports = function () {
 
     var _this = this;
 
-    var input = this.input(this.paths.source.style, [this.packageName + '.less'])
+    var input = this.input(this.source.css, [this.packageName + '.less'])
         , inputVendor = require('./vendor_css.json');
 
     var mainStream = gulp.src(input)
@@ -16,6 +16,6 @@ module.exports = function () {
     return es.merge(mainStream, vendorStream)
         .pipe(less())
         .pipe(concat(_this.packageName + '.css'))
-        .pipe(gulp.dest(this.paths.target.style));
+        .pipe(gulp.dest(this.target.css));
 
 }

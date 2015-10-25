@@ -1,28 +1,50 @@
 {
     "scope": {
-        "package-name": "asa",
-        "module-name": "asa",
+        "package-name": "asadmin",
+        "module-name": "asadmin",
         "source-dir": "src",
         "target-dir": "dist",
-        "paths": {
-			"assets": "/assets",
-            "style": "/assets/css",
-            "js": "/assets/js",
-            "vendor": "/vendor"
+        "source": {
+            "css": "src/assets/css",
+            "app": "src/asadmin",
+            "assets": "src/assets",
+            "demo": "src-demo"
+        },
+        "target": {
+            "css": "dist",
+            "app": "dist",
+            "assets": "dist",
+            "fonts": "dist/fonts",
+            "demo": "demo"
+        },
+        "demo": {
+            "assets": "demo/assets",
+            "app": "demo/app",
+            "asadmin": "demo/vendor/asadmin"
         }
     },
     "context": {
         "build": {
-			"default": true,
-            "clean": true,
+            "clean": false,
             "task-dir": "tasks",
             "task": {
                 "build/concat": true,
                 "build/style": true,
-				"copy/html": true,
+                "copy/html": true,
                 "copy/assets": true,
-                "vendor/concat": true,
                 "vendor/copy": true
+            }
+        },
+        "demo": {
+            "default": true,
+            "clean": false,
+            "from-target-context": "build",
+            "task-dir": "tasks",
+            "task": {
+                "demo/asadmin": true,
+                "demo/app": true,
+                "demo/html": true,
+                "demo/other": true
             }
         }
     }

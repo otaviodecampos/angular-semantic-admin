@@ -1,0 +1,8 @@
+{
+    "sidebar-visible": true,
+    "sidebar-open": false,
+    "sidebar": {},
+    "$constant": {
+        "$module": "asadmin"
+    }
+}

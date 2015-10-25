@@ -1,0 +1,32 @@
+{
+    "itens": [
+        {
+            "icon": "plus",
+            "open": false,
+            "templateUrl": "demo/add.tpl.html"
+        },
+        {
+            "icon": "configure"
+        },
+        {
+            "icon": "edit"
+        },
+        {
+            "icon": "maximize",
+            "itens": [
+                {
+                    "icon": "desktop"
+                },
+                {
+                    "icon": "tablet"
+                },
+                {
+                    "icon": "mobile"
+                }
+            ]
+        }
+    ],
+    "$constant": {
+        "$module": "demo"
+    }
+}

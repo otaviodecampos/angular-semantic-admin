@@ -5,4 +5,5 @@ node/
 vendor/
 *.log
 .openshift
-demo/vendor
+demo/
+dist/

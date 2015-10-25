@@ -1,1 +1,5 @@
-[]
+[
+    "vendor/jquery/dist/jquery.js",
+    "vendor/semantic/dist/semantic.js",
+    "vendor/angular/angular.js"
+]

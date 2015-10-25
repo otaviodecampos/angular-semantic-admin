@@ -10,16 +10,15 @@ module.exports = function () {
 
     var _this = this;
 
-    del.sync([this.target.app]);
+    del.sync([this.demo.app]);
 
-    var input = this.input(this.source.app, ['**/*.json', '**/*.js'])
-        , inputTpl = this.input(this.source.app, ['**/*.tpl.html'])
-        , inputVendor = require('./vendor_js.json');
+    var input = this.input(this.source.demo, ['**/*.json', '**/*.*.js'])
+        , inputTpl = this.input(this.source.demo, ['**/*.tpl.html']);
 
     var options = {
-        module: _this.moduleName,
+        module: 'demo',
         transformUrl: function(url) {
-            return _this.moduleName + '/' + url.match(/[\w-]+.tpl.html$/g)[0];
+            return 'demo/' + url.match(/[\w-]+.tpl.html$/g)[0];
         }
     }
 
@@ -30,22 +29,17 @@ module.exports = function () {
         .pipe(ngjson.module())
         .pipe(ngjson.constant());
 
-    var vendorStream = gulp.src(inputVendor);
-
-    return es.merge(jsStream, tplStream, vendorStream)
+    return es.merge(jsStream, tplStream)
         .pipe(order([
-            "**/jquery.js",
-            "**/angular.js",
-            "**/semantic.js",
             "**/*.module.json",
             "**/*.module.js",
             "**/*.constant.json",
             "**/*.provider.js",
             "**/*.config.js",
-            "**/*.js",
+            "**/*.*.js",
             "**/*.tpl.html"
         ]))
-        .pipe(concat(_this.packageName + '.js'))
-        .pipe(gulp.dest(this.target.app));
+        .pipe(concat('demo.js'))
+        .pipe(gulp.dest(this.demo.app));
 
 }
