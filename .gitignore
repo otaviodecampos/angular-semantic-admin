@@ -1,10 +1,6 @@
 .idea/
 node_modules/
-bower_components/
-node/
 vendor/
 *.log
-.openshift
-demo/
 dist/
 dist-demo/

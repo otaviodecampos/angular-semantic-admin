@@ -3,15 +3,15 @@ var gulp = require('gulp')
     , concat = require('gulp-concat')
     , templateCache = require('gulp-angular-templatecache')
     , es = require('event-stream')
-    , order = require("gulp-order");
+    , order = require("gulp-order")
+    , del = require('del');
 
 module.exports = function () {
 
     var _this = this;
 
-    var input = this.input(this.srcApp, ['**/*.json', '**/*.js'])
-        , inputTpl = this.input(this.srcApp, ['**/*.tpl.html'])
-        , inputVendor = this.vendorConcat;
+    var input = this.input(this.srcDir, ['**/*.json', '**/*.*.js'])
+        , inputTpl = this.input(this.srcDir, ['**/*.tpl.html']);
 
     var options = {
         module: this.buildName,
@@ -27,22 +27,17 @@ module.exports = function () {
         .pipe(ngjson.module())
         .pipe(ngjson.constant());
 
-    var vendorStream = gulp.src(inputVendor);
-
-    return es.merge(jsStream, tplStream, vendorStream)
+    return es.merge(jsStream, tplStream)
         .pipe(order([
-            "**/jquery.js",
-            "**/angular.js",
-            "**/semantic.js",
             "**/*.module.json",
             "**/*.module.js",
             "**/*.constant.json",
             "**/*.provider.js",
             "**/*.config.js",
-            "**/*.js",
+            "**/*.*.js",
             "**/*.tpl.html"
         ]))
         .pipe(concat(this.buildName + '.js'))
-        .pipe(gulp.dest(this.buildDir));
+        .pipe(gulp.dest(this.buildApp));
 
 }

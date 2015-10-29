@@ -3,22 +3,19 @@ var gulp = require('gulp')
     , concat = require('gulp-concat')
     , templateCache = require('gulp-angular-templatecache')
     , es = require('event-stream')
-    , order = require("gulp-order")
-    , del = require('del');
+    , order = require("gulp-order");
 
 module.exports = function () {
 
     var _this = this;
 
-    del.sync([this.demo.app]);
-
-    var input = this.input(this.source.demo, ['**/*.json', '**/*.*.js'])
-        , inputTpl = this.input(this.source.demo, ['**/*.tpl.html']);
+    var input = this.input(this.srcApp, ['**/*.json', '**/*.js'])
+        , inputTpl = this.input(this.srcApp, ['**/*.tpl.html']);
 
     var options = {
-        module: 'demo',
+        module: this.buildName,
         transformUrl: function(url) {
-            return 'demo/' + url.match(/[\w-]+.tpl.html$/g)[0];
+            return _this.buildName + '/' + url.match(/[\w-]+.tpl.html$/g)[0];
         }
     }
 
@@ -36,10 +33,10 @@ module.exports = function () {
             "**/*.constant.json",
             "**/*.provider.js",
             "**/*.config.js",
-            "**/*.*.js",
+            "**/*.js",
             "**/*.tpl.html"
         ]))
-        .pipe(concat('demo.js'))
-        .pipe(gulp.dest(this.demo.app));
+        .pipe(concat(this.buildName + '.only.js'))
+        .pipe(gulp.dest(this.buildDir));
 
 }

@@ -1,0 +1,53 @@
+{
+    "build": {
+        "scope": {
+            "build-name": "asadmin",
+            "build-dir": "dist",
+            "build-fonts": "dist/fonts",
+            "src-dir": "src",
+            "src-css": "src/assets/css",
+            "src-fonts": "src/assets/fonts",
+            "src-app": "src/app",
+            "vendor-concat": [
+                "vendor/jquery/dist/jquery.js",
+                "vendor/semantic/dist/semantic.js",
+                "vendor/angular/angular.js"
+            ],
+            "vendor-fonts": [
+                "vendor/semantic/dist/themes/default/assets/fonts/*"
+            ]
+        },
+        "clean": true,
+        "default": true,
+        "task-dir": "tasks/build",
+        "task": {
+            "concat": true,
+            "concat-only": true,
+            "css": true,
+            "fonts": true
+        }
+    },
+    "demo": {
+        "scope": {
+            "build-name": "demo",
+            "build-dir": "dist-demo",
+            "build-app": "dist-demo/app",
+            "build-vendor": "dist-demo/vendor/asadmin",
+            "src-dir": "src-demo",
+            "src-css": "src-demo/assets/css",
+            "src-app": "src-demo/app",
+            "vendor-copy": {
+                "asadmin": "dist/**/*"
+            }
+        },
+        "after": "build",
+        "clean": true,
+        "task-dir": "tasks/demo",
+        "task": {
+            "concat": true,
+            "css": true,
+            "copy": true,
+            "vendor": true
+        }
+    }
+}
