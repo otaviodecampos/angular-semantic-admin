@@ -3,6 +3,6 @@
     "sidebar-open": false,
     "sidebar": {},
     "$constant": {
-        "$module": "asadmin"
+        "$module": "angular-semantic-admin"
     }
 }

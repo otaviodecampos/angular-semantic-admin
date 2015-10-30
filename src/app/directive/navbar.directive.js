@@ -1,12 +1,12 @@
 (function() {
 
-    angular.module('asadmin')
+    angular.module('angular-semantic-admin')
         .directive('asadminNavbar', Directive);
 
     function Directive() {
         return {
             restrict: 'E',
-            templateUrl: 'asadmin/navbar.tpl.html',
+            templateUrl: 'angular-semantic-admin/navbar.tpl.html',
             replace: true
         }
     }

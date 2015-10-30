@@ -1,6 +1,6 @@
 (function() {
 
-    angular.module('asadmin')
+    angular.module('angular-semantic-admin')
         .controller('SidebarItemController', Controller);
 
     function Controller($scope, Asadmin) {

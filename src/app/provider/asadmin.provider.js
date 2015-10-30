@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('asadmin')
+    angular.module('angular-semantic-admin')
         .provider('Asadmin', Provider);
 
     function Provider(ASADMIN) {

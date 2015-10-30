@@ -1,6 +1,6 @@
 (function() {
 
-    angular.module('asadmin')
+    angular.module('angular-semantic-admin')
         .directive('asadminSidebar', Directive);
 
     function Directive() {
@@ -8,7 +8,7 @@
             restrict: 'E',
             require: 'asAdmin',
             controller: 'SidebarController as sidebar',
-            templateUrl: 'asadmin/sidebar.tpl.html',
+            templateUrl: 'angular-semantic-admin/sidebar.tpl.html',
             replace: true
         }
     }

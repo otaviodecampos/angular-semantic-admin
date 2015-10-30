@@ -1,7 +1,7 @@
 {
     "build": {
         "scope": {
-            "build-name": "asadmin",
+            "build-name": "angular-semantic-admin",
             "build-dir": "dist",
             "build-fonts": "dist/fonts",
             "src-dir": "src",
@@ -32,7 +32,7 @@
             "build-name": "demo",
             "build-dir": "dist-demo",
             "build-app": "dist-demo/app",
-            "build-vendor": "dist-demo/vendor/asadmin",
+            "build-vendor": "dist-demo/vendor/angular-semantic-admin",
             "src-dir": "src-demo",
             "src-css": "src-demo/assets/css",
             "src-app": "src-demo/app",

@@ -1,12 +1,12 @@
 (function() {
 
-    angular.module('asadmin')
+    angular.module('angular-semantic-admin')
         .directive('asAdmin', Directive);
 
     function Directive() {
         return {
             restrict: 'EC',
-            templateUrl: 'asadmin/asadmin.tpl.html',
+            templateUrl: 'angular-semantic-admin/asadmin.tpl.html',
             controller: 'AsadminController as asadmin',
             transclude: true,
             replace: true,

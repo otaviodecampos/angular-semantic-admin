@@ -1,6 +1,6 @@
 (function() {
 
-    angular.module('asadmin')
+    angular.module('angular-semantic-admin')
         .controller('AsadminController', Controller);
 
     function Controller($scope, Asadmin) {
