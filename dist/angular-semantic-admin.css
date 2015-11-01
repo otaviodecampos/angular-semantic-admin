@@ -343,13 +343,11 @@ html {
 }
 .device.phone {
   width: 320px;
-  min-height: 100px;
-  height: 480px;
+  min-height: 480px;
 }
 .device.tablet {
   width: 768px;
-  min-height: 100px;
-  height: 480px;
+  min-height: 480px;
 }
 /* effects.less */
 @-webkit-keyframes fadeIn {
