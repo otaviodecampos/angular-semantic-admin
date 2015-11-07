@@ -59666,7 +59666,7 @@ $.fn.visibility.settings = {
             } else if(item.templateUrl) {
                 item.open = force || !item.open;
                 sidebar.sidebarTemplateUrl = item.templateUrl;
-                Asadmin.sidebarOpen = force || !Asadmin.sidebarOpen;
+                force && Asadmin.getSidebar().setOpen(true) || Asadmin.getSidebar().toogleOpen();
             }
         }
 
