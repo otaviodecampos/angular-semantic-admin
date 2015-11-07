@@ -1,6 +1,6 @@
 {
     "build": {
-        "scope": {
+        "path": {
             "build-name": "angular-semantic-admin",
             "build-dir": "dist",
             "build-fonts": "dist/fonts",
@@ -18,7 +18,7 @@
             ]
         },
         "clean": true,
-        "default": true,
+        "default": false,
         "task-dir": "tasks/build",
         "task": {
             "concat": true,
@@ -28,7 +28,7 @@
         }
     },
     "demo": {
-        "scope": {
+        "path": {
             "build-name": "demo",
             "build-dir": "dist-demo",
             "build-app": "dist-demo/app",
@@ -43,6 +43,7 @@
         "after": "build",
         "clean": true,
         "task-dir": "tasks/demo",
+        "default": true,
         "task": {
             "concat": true,
             "css": true,

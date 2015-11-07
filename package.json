@@ -14,9 +14,9 @@
     "gulp": "^3.9.0",
     "gulp-angular-templatecache": "^1.7.0",
     "gulp-concat": "^2.6.0",
-    "gulp-context": "0.0.15",
+    "gulp-context": "*",
     "gulp-less": "^3.0.3",
-    "gulp-ng-json": "0.0.6",
+    "gulp-ng-json": "*",
     "gulp-order": "^1.1.1",
     "semantic-ui": "^2.1.4",
     "serve-static": "^1.10.0"

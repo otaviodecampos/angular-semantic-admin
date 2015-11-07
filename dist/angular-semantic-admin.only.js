@@ -16,9 +16,11 @@
 
     function Constant() {
         return {
-          "sidebar": {},
-          "sidebarVisible": true,
-          "sidebarOpen": false
+          "sidebar": {
+                    "visible": true,
+                    "open": false,
+                    "itens": []
+          }
 };
     }
 
@@ -31,36 +33,52 @@
 
     function Provider(ASADMIN) {
 
-        var properties = {};
+        var properties = angular.copy(ASADMIN);
 
-        for (var attr in ASADMIN) {
+        function createGetterSetter(obj) {
+            for (var attr in obj) {
 
-            (function (attr) {
-                properties[attr] = ASADMIN[attr];
-
-                var name = attr.charAt(0).toUpperCase() + attr.slice(1);
-                properties['set' + name] = function (value) {
-                    properties[attr] = value;
-                }
-
-                if (typeof ASADMIN[attr] == "boolean") {
-                    properties['is' + name] = function () {
-                        return properties[attr] == true;
+                (function (attr) {
+                    var attrValue = obj[attr]
+    
+                    if(attr.indexOf('get') != 0 && attr.indexOf('set') != 0 && attr.indexOf('toogle') != 0 && attr.indexOf('is') != 0) {
+                        var name = attr.charAt(0).toUpperCase() + attr.slice(1);
+                    
+                        obj['set' + name] = function (value) {
+                            if (typeof value == "object") {
+                                value = angular.extend(obj[attr], value);
+                                createGetterSetter(value);
+                            }
+                            obj[attr] = value;
+                        }
+        
+                        if (typeof attrValue == "boolean") {
+                            obj['is' + name] = function () {
+                                return obj[attr] == true;
+                            }
+        
+                            obj['toogle' + name] = function () {
+                                return obj[attr] = !obj[attr];
+                            }
+                        } else {
+                            obj['get' + name] = function () {
+                                return obj[attr];
+                            }
+                        }
+                        
+                        if (typeof attrValue == "object") {
+                            createGetterSetter(attrValue);
+                        }
                     }
-
-                    properties['toogle' + name] = function () {
-                        return properties[attr] = !properties[attr];
-                    }
-                } else {
-                    properties['get' + name] = function () {
-                        return properties[attr];
-                    }
-                }
-
-            })(attr);
-
+                    
+                })(attr);
+            }   
         }
-
+        
+        createGetterSetter(properties);
+        
+        window.teste = properties;
+        
         properties.$get = function () {
             return properties;
         }
@@ -79,8 +97,8 @@
         $scope.Asadmin = Asadmin;
 
         this.switchSidebar = function() {
-            Asadmin.toogleSidebarVisible();
-            Asadmin.setSidebarOpen(false);
+            Asadmin.getSidebar().toogleVisible();
+            Asadmin.getSidebar().setOpen(false);
 
             $scope.$broadcast('switch-sidebar');
         }
@@ -182,7 +200,7 @@
     }
 
 })();
-angular.module("angular-semantic-admin").run(["$templateCache", function($templateCache) {$templateCache.put("angular-semantic-admin/asadmin.tpl.html","<div class=\"asadmin\" ng-class=\"{\'sidebar-visible\': Asadmin.sidebarVisible, \'sidebar-open\': Asadmin.sidebarOpen}\">\r\n    <asadmin-sidebar></asadmin-sidebar>\r\n    <asadmin-navbar></asadmin-navbar>\r\n    <div class=\"asadmin-content\" ng-transclude></div>\r\n</div>");
-$templateCache.put("angular-semantic-admin/navbar.tpl.html","<div class=\"asadmin-navbar ui inverted menu\">\r\n    <div ng-click=\"asadmin.switchSidebar()\" class=\"sidebar-switch\"></div>\r\n    Navigation\r\n</div>");
+angular.module("angular-semantic-admin").run(["$templateCache", function($templateCache) {$templateCache.put("angular-semantic-admin/asadmin.tpl.html","<div class=\"asadmin\" ng-class=\"{\'sidebar-visible\': Asadmin.sidebar.visible, \'sidebar-open\': Asadmin.sidebar.open}\">\n    <asadmin-sidebar></asadmin-sidebar>\n    <asadmin-navbar></asadmin-navbar>\n    <div class=\"asadmin-content\" ng-transclude></div>\n</div>");
+$templateCache.put("angular-semantic-admin/navbar.tpl.html","<div class=\"asadmin-navbar ui inverted menu\">\n    <div ng-click=\"asadmin.switchSidebar()\" class=\"sidebar-switch\"></div>\n    Navigation\n</div>");
 $templateCache.put("angular-semantic-admin/sidebar-template.tpl.html","sidebar-template.tpl.html");
-$templateCache.put("angular-semantic-admin/sidebar.tpl.html","<div class=\"asadmin-sidebar\">\r\n    <div class=\"ui inverted fluid visible vertical sidebar static icon menu\">\r\n        <a ng-click=\"item.$open()\" ng-class=\"{\'open\': item.open, \'sidebar-open\': item.templateUrl && item.open}\" ng-repeat=\"item in sidebar.itens\" ng-controller=\"SidebarItemController\" class=\"item\">\r\n            <i ng-class=\"item.icon\" class=\"icon\"></i>\r\n            <div ng-if=\"item.itens\" class=\"ui inverted fluid icon link menu horizontal\">\r\n                <div ng-repeat=\"item in item.itens\" class=\"item\">\r\n                    <i ng-class=\"item.icon\" class=\"icon\"></i>\r\n                </div>\r\n            </div>\r\n        </a>\r\n    </div>\r\n    <div class=\"asadmin-sidebar-open\">\r\n        <div ng-include=\"sidebar.sidebarTemplateUrl\"></div>\r\n    </div>\r\n</div>");}]);
+$templateCache.put("angular-semantic-admin/sidebar.tpl.html","<div class=\"asadmin-sidebar\">\n    <div class=\"ui inverted fluid visible vertical sidebar static icon menu\">\n        <a ng-click=\"item.$open()\" ng-class=\"{\'open\': item.open, \'sidebar-open\': item.templateUrl && item.open}\" ng-repeat=\"item in sidebar.itens\" ng-controller=\"SidebarItemController\" class=\"item\">\n            <i ng-class=\"item.icon\" class=\"icon\"></i>\n            <div ng-if=\"item.itens\" class=\"ui inverted fluid icon link menu horizontal\">\n                <div ng-repeat=\"item in item.itens\" class=\"item\">\n                    <i ng-class=\"item.icon\" class=\"icon\"></i>\n                </div>\n            </div>\n        </a>\n    </div>\n    <div class=\"asadmin-sidebar-open\">\n        <div ng-include=\"sidebar.sidebarTemplateUrl\"></div>\n    </div>\n</div>");}]);

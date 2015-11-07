@@ -6,7 +6,6 @@
     function Config(AsadminProvider, SIDEBAR) {
 
         AsadminProvider.setSidebar(SIDEBAR);
-        AsadminProvider.setSidebarVisible(true);
 
     }
 

@@ -8,8 +8,8 @@
         $scope.Asadmin = Asadmin;
 
         this.switchSidebar = function() {
-            Asadmin.toogleSidebarVisible();
-            Asadmin.setSidebarOpen(false);
+            Asadmin.getSidebar().toogleVisible();
+            Asadmin.getSidebar().setOpen(false);
 
             $scope.$broadcast('switch-sidebar');
         }

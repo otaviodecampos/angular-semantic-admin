@@ -1,8 +1,7 @@
 {
-    "sidebar-visible": true,
-    "sidebar-open": false,
-    "sidebar": {},
-    "$constant": {
-        "$module": "angular-semantic-admin"
+    "sidebar": {
+        "visible": true,
+        "open": false,
+        "itens": []
     }
 }

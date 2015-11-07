@@ -25,8 +25,5 @@
                 }
             ]
         }
-    ],
-    "$constant": {
-        "$module": "demo"
-    }
+    ]
 }
