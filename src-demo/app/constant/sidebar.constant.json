@@ -16,7 +16,8 @@
             "icon": "maximize",
             "itens": [
                 {
-                    "icon": "desktop"
+                    "icon": "desktop",
+                    "click": "demo.click()"
                 },
                 {
                     "icon": "tablet"

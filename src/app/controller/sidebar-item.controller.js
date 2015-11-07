@@ -3,12 +3,15 @@
     angular.module('angular-semantic-admin')
         .controller('SidebarItemController', Controller);
 
-    function Controller($scope, Asadmin) {
+    function Controller($parse, $scope, Asadmin) {
         var item = $scope.item,
             sidebar = $scope.sidebar;
 
         // functions
         item.$open = function (force) {
+            
+            $parse(item.click)($scope);
+            
             if(item.itens) {
                 item.open = !item.open;
             } else if(item.templateUrl) {
