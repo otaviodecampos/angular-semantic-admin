@@ -2,10 +2,10 @@
     "visible": true,
     "itens": [
         {
-            "label": "Sidebar",
+            "label": "Opção com Sidebar",
             "icon": "plus",
             "open": true,
-            "templateUrl": "demo/add.tpl.html"
+            "templateUrl": "demo/sidebar.tpl.html"
         },
         {
             "label": "Opção",
