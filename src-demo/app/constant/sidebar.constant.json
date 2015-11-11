@@ -2,27 +2,30 @@
     "visible": true,
     "itens": [
         {
+            "label": "Sidebar",
             "icon": "plus",
             "open": true,
             "templateUrl": "demo/add.tpl.html"
         },
         {
+            "label": "Opção",
             "icon": "configure"
         },
         {
-            "icon": "edit"
-        },
-        {
+            "label": "Sub Opções",
             "icon": "maximize",
             "itens": [
                 {
+                    "label": "Opção 1",
                     "icon": "desktop",
                     "click": "demo.click()"
                 },
                 {
+                    "label": "Opção 2",
                     "icon": "tablet"
                 },
                 {
+                    "label": "Opção 3",
                     "icon": "mobile"
                 }
             ]

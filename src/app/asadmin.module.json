@@ -1,4 +1,6 @@
 {
     "name": "angular-semantic-admin",
-    "dependencies": []
+    "dependencies": [
+        "angular-semantic-ui"
+    ]
 }
