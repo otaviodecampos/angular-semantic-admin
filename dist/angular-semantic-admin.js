@@ -59584,6 +59584,7 @@ $.fn.visibility.settings = {
 
 (function () {
 
+    /* global angular */
     angular.module('angular-semantic-admin')
         .provider('Asadmin', Provider);
 
@@ -59595,7 +59596,7 @@ $.fn.visibility.settings = {
             for (var attr in obj) {
 
                 (function (attr) {
-                    var attrValue = obj[attr]
+                    var attrValue = obj[attr];
     
                     if(attr.indexOf('get') != 0 && attr.indexOf('set') != 0 && attr.indexOf('toogle') != 0 && attr.indexOf('is') != 0) {
                         var name = attr.charAt(0).toUpperCase() + attr.slice(1);
@@ -59606,20 +59607,20 @@ $.fn.visibility.settings = {
                                 createGetterSetter(value);
                             }
                             obj[attr] = value;
-                        }
+                        };
         
                         if (typeof attrValue == "boolean") {
                             obj['is' + name] = function () {
                                 return obj[attr] == true;
-                            }
+                            };
         
                             obj['toogle' + name] = function () {
                                 return obj[attr] = !obj[attr];
-                            }
+                            };
                         } else {
                             obj['get' + name] = function () {
                                 return obj[attr];
-                            }
+                            };
                         }
                         
                         if (typeof attrValue == "object") {
@@ -59633,11 +59634,9 @@ $.fn.visibility.settings = {
         
         createGetterSetter(properties);
         
-        window.teste = properties;
-        
         properties.$get = function () {
             return properties;
-        }
+        };
 
         return properties;
     }
@@ -59645,6 +59644,7 @@ $.fn.visibility.settings = {
 })();
 (function() {
 
+    /* global angular */
     angular.module('angular-semantic-admin')
         .controller('AsadminController', Controller);
 
@@ -59657,12 +59657,13 @@ $.fn.visibility.settings = {
             Asadmin.getSidebar().setOpen(false);
 
             $scope.$broadcast('switch-sidebar');
-        }
+        };
     }
 
 })();
 (function() {
 
+    /* global angular */
     angular.module('angular-semantic-admin')
         .controller('SidebarItemController', Controller);
 
@@ -59670,9 +59671,8 @@ $.fn.visibility.settings = {
         var item = $scope.item,
             sidebar = $scope.sidebar;
 
-        // functions
+        /* functions */
         item.$open = function (force) {
-            
             $parse(item.click)($scope);
             
             if(item.itens) {
@@ -59682,21 +59682,21 @@ $.fn.visibility.settings = {
                 sidebar.sidebarTemplateUrl = item.templateUrl;
                 Asadmin.sidebar.open = force || !Asadmin.sidebar.open;
             }
-        }
+        };
 
-        // sidebar events
+        /* sidebar events */
         $scope.$on('switch-sidebar', function() {
            item.open = false;
         });
         
-        // popup events
+        /* popup events */
         item.$onShowPopup = function() {
             var show = true;
             if($element.hasClass('open')) {
                 show = false;
             }
             return show;
-        }
+        };
         
         $element.hover(function(e) {
             e.stopPropagation();
@@ -59709,7 +59709,7 @@ $.fn.visibility.settings = {
             $element.popup('hide');
         }
         
-        // initialize
+        /* initialize */
         if(item.open) {
             item.$open(true);
         }
@@ -59719,6 +59719,7 @@ $.fn.visibility.settings = {
 })();
 (function() {
 
+    /* global angular */
     angular.module('angular-semantic-admin')
         .controller('SidebarController', Controller);
 
@@ -59780,7 +59781,8 @@ $.fn.visibility.settings = {
 
 })();
 (function() {
-
+    
+    /* global angular */
     angular.module('angular-semantic-ui')
         .directive('uiAccordion', Directive);
 
@@ -59791,12 +59793,13 @@ $.fn.visibility.settings = {
                 var settings = $parse(attrs.uiAccordion)(scope);
                 element.accordion(settings);
             }
-        }
+        };
     }
 
 })();
 (function() {
 
+    /* global angular */
     angular.module('angular-semantic-ui')
         .directive('uiPopup', Directive);
 
@@ -59807,7 +59810,7 @@ $.fn.visibility.settings = {
                 var settings = $parse(attrs.uiPopup)(scope);
                 element.popup(settings);
             }
-        }
+        };
     }
 
 })();

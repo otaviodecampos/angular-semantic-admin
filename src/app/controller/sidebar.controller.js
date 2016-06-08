@@ -1,5 +1,6 @@
 (function() {
 
+    /* global angular */
     angular.module('angular-semantic-admin')
         .controller('SidebarController', Controller);
 

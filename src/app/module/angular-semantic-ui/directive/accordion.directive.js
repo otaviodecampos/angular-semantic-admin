@@ -1,5 +1,6 @@
 (function() {
-
+    
+    /* global angular */
     angular.module('angular-semantic-ui')
         .directive('uiAccordion', Directive);
 
@@ -10,7 +11,7 @@
                 var settings = $parse(attrs.uiAccordion)(scope);
                 element.accordion(settings);
             }
-        }
+        };
     }
 
 })();

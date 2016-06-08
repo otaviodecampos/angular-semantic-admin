@@ -1,5 +1,6 @@
 (function() {
 
+    /* global angular */
     angular.module('angular-semantic-ui')
         .directive('uiPopup', Directive);
 
@@ -10,7 +11,7 @@
                 var settings = $parse(attrs.uiPopup)(scope);
                 element.popup(settings);
             }
-        }
+        };
     }
 
 })();

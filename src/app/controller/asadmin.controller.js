@@ -1,5 +1,6 @@
 (function() {
 
+    /* global angular */
     angular.module('angular-semantic-admin')
         .controller('AsadminController', Controller);
 
@@ -12,7 +13,7 @@
             Asadmin.getSidebar().setOpen(false);
 
             $scope.$broadcast('switch-sidebar');
-        }
+        };
     }
 
 })();
