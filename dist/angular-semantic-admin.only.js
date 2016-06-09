@@ -89,10 +89,18 @@
         
         createGetterSetter(properties);
         
+        properties.setSidebarUrlResolver = function(resolver) {
+            properties.sidebarUrlResolver = resolver;
+        }
+        
+        properties.getSidebarUrlResolver = function() {
+            return properties.sidebarUrlResolver;
+        }
+        
         properties.$get = function () {
             return properties;
         };
-
+        
         return properties;
     }
 
@@ -123,10 +131,21 @@
         .controller('SidebarItemController', Controller);
 
     function Controller($parse, $scope, $element, Asadmin) {
+        
+        var that = this;
+        
         var item = $scope.item,
             sidebar = $scope.sidebar;
+        
+        /* controller functions */
+        that.getStateUrl = function(item) {
+            var resolver = Asadmin.getSidebarUrlResolver();
+            var fn = resolver();
+            return fn(item); //$state.href(item.state);
+        }
 
-        /* functions */
+
+        /* item functions */
         item.$open = function (force) {
             $parse(item.click)($scope);
             
@@ -272,4 +291,4 @@
 angular.module("angular-semantic-admin").run(["$templateCache", function($templateCache) {$templateCache.put("angular-semantic-admin/asadmin.tpl.html","<div class=\"asadmin\" ng-class=\"{\'sidebar-visible\': Asadmin.sidebar.visible, \'sidebar-open\': Asadmin.sidebar.open}\">\n    <asadmin-sidebar></asadmin-sidebar>\n    <asadmin-navbar></asadmin-navbar>\n    <div class=\"asadmin-content\" ng-transclude></div>\n</div>");
 $templateCache.put("angular-semantic-admin/navbar.tpl.html","<div class=\"asadmin-navbar ui inverted menu\">\n    <div ng-click=\"asadmin.switchSidebar()\" class=\"sidebar-switch\"></div>\n    Navigation\n</div>");
 $templateCache.put("angular-semantic-admin/sidebar-template.tpl.html","sidebar-template.tpl.html");
-$templateCache.put("angular-semantic-admin/sidebar.tpl.html","<div class=\"asadmin-sidebar\">\n    <div class=\"ui inverted fluid visible vertical sidebar static icon menu\">\n        <a ng-click=\"item.$open()\" ui-popup=\"{position: \'bottom right\', onShow: item.$onShowPopup}\" data-content=\"{{ item.label }}\" data-variation=\"inverted\" ng-class=\"{\'open\': item.open, \'sidebar-open\': item.templateUrl && item.open}\" ng-repeat=\"item in sidebar.itens\" ng-controller=\"SidebarItemController\" class=\"item\">\n            <i ng-class=\"item.icon\" class=\"icon\"></i>\n            <div ng-if=\"item.itens\" class=\"ui inverted fluid icon link menu horizontal\">\n                <div ng-click=\"item.$open()\" ui-popup=\"{position: \'bottom right\'}\" data-content=\"{{ item.label }}\" data-variation=\"inverted\" ng-repeat=\"item in item.itens\" ng-controller=\"SidebarItemController\" class=\"item\">\n                    <i ng-class=\"item.icon\" class=\"icon\"></i>\n                </div>\n            </div>\n        </a>\n    </div>\n    <div class=\"asadmin-sidebar-open\">\n        <div ng-include=\"sidebar.sidebarTemplateUrl\"></div>\n    </div>\n</div>");}]);
+$templateCache.put("angular-semantic-admin/sidebar.tpl.html","<div class=\"asadmin-sidebar\">\n    <div class=\"ui inverted fluid visible vertical sidebar static icon menu\">\n        <a ng-click=\"item.$open()\" ui-popup=\"{position: \'bottom right\', onShow: item.$onShowPopup}\" data-content=\"{{ item.label }}\" data-variation=\"inverted\" ng-class=\"{\'open\': item.open, \'sidebar-open\': item.templateUrl && item.open}\" ng-repeat=\"item in sidebar.itens\" ng-controller=\"SidebarItemController as itemCtrl\" class=\"item\">\n            <i ng-class=\"item.icon\" class=\"icon\"></i>\n            <div ng-if=\"item.itens\" class=\"ui inverted fluid icon link menu horizontal\">\n                <div ng-href=\"{{ subItemCtrl.getStateUrl(item) }}\" ng-click=\"item.$open()\" ui-popup=\"{position: \'bottom right\'}\" data-content=\"{{ item.label }}\" data-variation=\"inverted\" ng-repeat=\"item in item.itens\" ng-controller=\"SidebarItemController as as subItemCtrl\" class=\"item\">\n                    <i ng-class=\"item.icon\" class=\"icon\"></i>\n                </div>\n            </div>\n        </a>\n    </div>\n    <div class=\"asadmin-sidebar-open\">\n        <div ng-include=\"sidebar.sidebarTemplateUrl\"></div>\n    </div>\n</div>");}]);
