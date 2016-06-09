@@ -50,10 +50,18 @@
         
         createGetterSetter(properties);
         
+        properties.setSidebarUrlResolver = function(resolver) {
+            properties.sidebarUrlResolver = resolver;
+        }
+        
+        properties.getSidebarUrlResolver = function() {
+            return properties.sidebarUrlResolver;
+        }
+        
         properties.$get = function () {
             return properties;
         };
-
+        
         return properties;
     }
 
