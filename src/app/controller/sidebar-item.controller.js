@@ -5,10 +5,19 @@
         .controller('SidebarItemController', Controller);
 
     function Controller($parse, $scope, $element, Asadmin) {
+        
+        var that = this;
+        
         var item = $scope.item,
             sidebar = $scope.sidebar;
+        
+        /* controller functions */
+        that.getStateUrl = function(item) {
+            return ''; //$state.href(item.state);
+        }
 
-        /* functions */
+
+        /* item functions */
         item.$open = function (force) {
             $parse(item.click)($scope);
             
