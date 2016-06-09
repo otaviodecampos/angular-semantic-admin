@@ -3,7 +3,8 @@
 
     angular.module('angular-semantic-admin', [
         
-        'angular-semantic-ui' 
+        'angular-semantic-ui', 
+        'ui.router' 
 
     ]);
 
@@ -89,14 +90,6 @@
         
         createGetterSetter(properties);
         
-        properties.setSidebarUrlResolver = function(resolver) {
-            properties.sidebarUrlResolver = resolver;
-        }
-        
-        properties.getSidebarUrlResolver = function() {
-            return properties.sidebarUrlResolver;
-        }
-        
         properties.$get = function () {
             return properties;
         };
@@ -130,7 +123,7 @@
     angular.module('angular-semantic-admin')
         .controller('SidebarItemController', Controller);
 
-    function Controller($parse, $scope, $element, Asadmin) {
+    function Controller($parse, $scope, $state, $element, Asadmin) {
         
         var that = this;
         
@@ -139,9 +132,7 @@
         
         /* controller functions */
         that.getStateUrl = function(item) {
-            var resolver = Asadmin.getSidebarUrlResolver();
-            var fn = resolver();
-            return fn(item); //$state.href(item.state);
+            return $state.href(item.state);
         }
 
 

@@ -11,7 +11,8 @@
             "vendor-concat": [
                 "vendor/jquery/dist/jquery.js",
                 "vendor/semantic/dist/semantic.js",
-                "vendor/angular/angular.js"
+                "vendor/angular/angular.js",
+                "vendor/angular-ui-router/release/angular-ui-router.js"
             ],
             "vendor-fonts": [
                 "vendor/semantic/dist/themes/default/assets/fonts/*"
