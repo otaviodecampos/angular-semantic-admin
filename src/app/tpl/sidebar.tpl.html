@@ -1,6 +1,6 @@
 <div class="asadmin-sidebar">
     <div class="ui inverted fluid visible vertical sidebar static icon menu">
-        <a ng-click="item.$open()" ui-popup="{position: 'bottom right', onShow: item.$onShowPopup}" data-content="{{ item.label }}" data-variation="inverted" ng-class="{'open': item.open, 'sidebar-open': item.templateUrl && item.open}" ng-repeat="item in sidebar.itens" ng-controller="SidebarItemController as itemCtrl" class="item">
+        <a ng-href="{{ itemCtrl.getStateUrl(item) }}" ng-click="item.$open()" ui-popup="{position: 'bottom right', onShow: item.$onShowPopup}" data-content="{{ item.label }}" data-variation="inverted" ng-class="{'open': item.open, 'sidebar-open': item.templateUrl && item.open}" ng-repeat="item in sidebar.itens" ng-controller="SidebarItemController as itemCtrl" class="item">
             <i ng-class="item.icon" class="icon"></i>
             <div ng-if="item.itens" class="ui inverted fluid icon link menu horizontal">
                 <div ng-href="{{ subItemCtrl.getStateUrl(item) }}" ng-click="item.$open()" ui-popup="{position: 'bottom right'}" data-content="{{ item.label }}" data-variation="inverted" ng-repeat="item in item.itens" ng-controller="SidebarItemController as as subItemCtrl" class="item">

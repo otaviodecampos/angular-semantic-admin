@@ -21,14 +21,18 @@
 
         /* item functions */
         item.$open = function (force) {
-            $parse(item.click)($scope);
+            if(item.state) {
+                
+            } else if(item.click) {
+                $parse(item.click)($scope);
             
-            if(item.itens) {
-                item.open = !item.open;
-            } else if(item.templateUrl) {
-                item.open = force || !item.open;
-                sidebar.sidebarTemplateUrl = item.templateUrl;
-                Asadmin.sidebar.open = force || !Asadmin.sidebar.open;
+                if(item.itens) {
+                    item.open = !item.open;
+                } else if(item.templateUrl) {
+                    item.open = force || !item.open;
+                    sidebar.sidebarTemplateUrl = item.templateUrl;
+                    Asadmin.sidebar.open = force || !Asadmin.sidebar.open;
+                }   
             }
         };
 
