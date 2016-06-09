@@ -3,5 +3,6 @@
         "visible": true,
         "open": false,
         "itens": []
-    }
+    },
+    "sidebarUrlResolver": null
 }

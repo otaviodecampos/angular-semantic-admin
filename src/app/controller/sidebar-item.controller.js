@@ -13,7 +13,9 @@
         
         /* controller functions */
         that.getStateUrl = function(item) {
-            return ''; //$state.href(item.state);
+            var resolver = Asadmin.getSidebarUrlResolver();
+            var fn = resolver();
+            return fn(item); //$state.href(item.state);
         }
 
 
