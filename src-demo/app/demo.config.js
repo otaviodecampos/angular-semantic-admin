@@ -3,8 +3,9 @@
     angular.module('demo')
         .config(Config);
 
-    function Config(AsadminProvider, SIDEBAR) {
-
+    function Config($urlRouterProvider, AsadminProvider, SIDEBAR, SETTINGS) {
+        
+        $urlRouterProvider.otherwise(SETTINGS.defaultUrl);
         AsadminProvider.setSidebar(SIDEBAR);
 
     }

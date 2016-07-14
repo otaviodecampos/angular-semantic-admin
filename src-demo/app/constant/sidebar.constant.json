@@ -2,6 +2,11 @@
     "visible": true,
     "itens": [
         {
+            "label": "Workspace",
+            "icon": "dashboard",
+            "state": "demo.workspace"
+        },
+        {
             "label": "Opção com Sidebar",
             "icon": "plus",
             "open": true,

@@ -11,19 +11,19 @@
         var item = $scope.item,
             sidebar = $scope.sidebar;
         
-        /* controller functions */
+        /* Public functions */
         that.getStateUrl = function(item) {
             return $state.href(item.state);
         }
+        
+        that.isActive = function(item) {
+            return $state.includes(item.state);
+        }
 
 
-        /* item functions */
+        /* Item functions */
         item.$open = function (force) {
-            if(item.state) {
-                
-            } else if(item.click) {
-                $parse(item.click)($scope);
-            
+            if(!item.state) {
                 if(item.itens) {
                     item.open = !item.open;
                 } else if(item.templateUrl) {
@@ -34,12 +34,12 @@
             }
         };
 
-        /* sidebar events */
+        /* Events */
         $scope.$on('switch-sidebar', function() {
            item.open = false;
         });
         
-        /* popup events */
+        /* Popup events */
         item.$onShowPopup = function() {
             var show = true;
             if($element.hasClass('open')) {
@@ -59,7 +59,7 @@
             $element.popup('hide');
         }
         
-        /* initialize */
+        /* Initializers */
         if(item.open) {
             item.$open(true);
         }

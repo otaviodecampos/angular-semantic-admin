@@ -16,7 +16,7 @@ module.exports = function () {
     var options = {
         module: this.buildName,
         transformUrl: function(url) {
-            return _this.buildName + '/' + url.match(/[\w-]+.tpl.html$/g)[0];
+            return _this.buildName + '/' + url.match(/[\w-.]+.tpl.html$/g)[0];
         }
     }
 
@@ -25,7 +25,8 @@ module.exports = function () {
 
     var jsStream = gulp.src(input)
         .pipe(ngjson.module())
-        .pipe(ngjson.constant());
+        .pipe(ngjson.constant())
+        .pipe(ngjson.state());
 
     return es.merge(jsStream, tplStream)
         .pipe(order([
@@ -34,6 +35,8 @@ module.exports = function () {
             "**/*.constant.json",
             "**/*.provider.js",
             "**/*.config.js",
+            "**/*.state.json",
+			"**/*.state.js",
             "**/*.*.js",
             "**/*.tpl.html"
         ]))
