@@ -16,6 +16,9 @@
             ],
             "vendor-fonts": [
                 "vendor/semantic/dist/themes/default/assets/fonts/*"
+            ],
+            "semantic": [
+                "vendor/semantic/dist/semantic.js"
             ]
         },
         "clean": true,
@@ -24,6 +27,7 @@
         "task": {
             "concat": true,
             "concat-only": true,
+            "semantic": true,
             "css": true,
             "fonts": true
         }
