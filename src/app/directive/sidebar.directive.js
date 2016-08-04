@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     angular.module('angular-semantic-admin')
         .directive('asadminSidebar', Directive);

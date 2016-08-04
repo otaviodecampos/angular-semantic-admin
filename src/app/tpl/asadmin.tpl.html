@@ -1,4 +1,5 @@
-<div class="asadmin" ng-class="{'sidebar-visible': Asadmin.sidebar.visible, 'sidebar-open': Asadmin.sidebar.open}">
+<div class="asadmin"
+     ng-class="{'sidebar-behavior-visible': Asadmin.sidebar.switchBehavior == 'visible', 'sidebar-compact': Asadmin.sidebar.compact, 'sidebar-visible': Asadmin.sidebar.visible, 'sidebar-open': Asadmin.sidebar.open}">
     <asadmin-sidebar></asadmin-sidebar>
     <asadmin-navbar></asadmin-navbar>
     <div class="asadmin-content" ng-transclude></div>

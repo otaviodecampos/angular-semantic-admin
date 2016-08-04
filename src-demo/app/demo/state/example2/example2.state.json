@@ -1,0 +1,5 @@
+{
+  "name": "demo.example2",
+  "url": "/example2",
+  "templateUrl": "demo/example2.state.tpl.html"
+}

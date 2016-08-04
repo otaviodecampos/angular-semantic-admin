@@ -1,6 +1,6 @@
 {
-    "name": "demo",
-    "url": "",
-    "abstract": true,
-    "templateUrl": "demo/demo.state.tpl.html"
+  "name": "demo",
+  "url": "",
+  "abstract": true,
+  "templateUrl": "demo/demo.state.tpl.html"
 }

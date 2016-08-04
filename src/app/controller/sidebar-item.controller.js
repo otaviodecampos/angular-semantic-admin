@@ -1,67 +1,75 @@
-(function() {
+(function () {
 
     /* global angular */
     angular.module('angular-semantic-admin')
         .controller('SidebarItemController', Controller);
 
-    function Controller($parse, $scope, $state, $element, Asadmin) {
-        
+    function Controller($scope, $state, $element, Asadmin) {
+
         var that = this;
-        
-        var item = $scope.item,
-            sidebar = $scope.sidebar;
-        
-        /* Public functions */
-        that.getStateUrl = function(item) {
-            return $state.href(item.state);
-        }
-        
-        that.isActive = function(item) {
-            return $state.includes(item.state);
+        var element = $element;
+        var scope = $scope;
+        var state = $state;
+        var item = scope.item;
+        var parent = scope.parent;
+        var sidebar = scope.sidebar;
+
+        /* public functions */
+        that.getStateUrl = function (item) {
+            return state.href(item.state);
         }
 
+        that.isActive = function (item) {
+            return state.includes(item.state);
+        }
 
-        /* Item functions */
-        item.$open = function (force) {
-            if(!item.state) {
-                if(item.itens) {
+        that.open = function (item, force) {
+            if (!item.state) {
+                if (item.itens) {
                     item.open = !item.open;
-                } else if(item.templateUrl) {
+                } else if (item.templateUrl) {
                     item.open = force || !item.open;
                     sidebar.sidebarTemplateUrl = item.templateUrl;
                     Asadmin.sidebar.open = force || !Asadmin.sidebar.open;
-                }   
+                }
             }
+
+            if (parent && (parent.horizontal || Asadmin.sidebar.compact)) {
+                parent.open = false;
+            }
+
+            scope.$emit('open-item-changed', item);
         };
 
-        /* Events */
-        $scope.$on('switch-sidebar', function() {
-           item.open = false;
-        });
-        
-        /* Popup events */
-        item.$onShowPopup = function() {
-            var show = true;
-            if($element.hasClass('open')) {
-                show = false;
+        that.onShowPopup = function () {
+            var show = Asadmin.sidebar.compact && !item.open && !parent;
+
+            if (parent && parent.horizontal) {
+                show = true;
             }
+
             return show;
         };
-        
-        $element.hover(function(e) {
-            e.stopPropagation();
+
+        /* events */
+        scope.$on('switch-sidebar', function () {
+            item.open = false;
         });
-        
-        $element.click(hidePopup);
-        $element.children('.menu').hover(hidePopup);
-        
-        function hidePopup(e) {
-            $element.popup('hide');
+
+        /* popup events */
+        element.click(hidePopup);
+        element.children('.menu').hover(hidePopup);
+        element.hover(function (event) {
+            event.stopPropagation();
+        });
+
+        function hidePopup(event) {
+            element.popup('hide');
         }
-        
-        /* Initializers */
-        if(item.open) {
-            item.$open(true);
+
+        /* init */
+        if (item.open) {
+            that.open(item, true);
         }
 
     }

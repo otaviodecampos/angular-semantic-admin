@@ -22,6 +22,11 @@
   -webkit-animation-name: fadeIn;
 }
 
+.animate-fade-out() {
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-name: fadeOut;
+}
+
 @-webkit-keyframes fadeIn {
   0% {
     display: none;
@@ -39,7 +44,26 @@
   }
 }
 
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 .asadmin:not(.animate) * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+  -webkit-animation-name: none !important;
+}
+
+.disableAnimation() {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -ms-transition: none !important;

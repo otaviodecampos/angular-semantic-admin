@@ -1,59 +1,59 @@
 {
-    "build": {
-        "path": {
-            "build-name": "angular-semantic-admin",
-            "build-dir": "dist",
-            "build-fonts": "dist/fonts",
-            "src-dir": "src",
-            "src-css": "src/assets/css",
-            "src-fonts": "src/assets/fonts",
-            "src-app": "src/app",
-            "vendor-concat": [
-                "vendor/jquery/dist/jquery.js",
-                "vendor/semantic/dist/semantic.js",
-                "vendor/angular/angular.js",
-                "vendor/angular-ui-router/release/angular-ui-router.js"
-            ],
-            "vendor-fonts": [
-                "vendor/semantic/dist/themes/default/assets/fonts/*"
-            ],
-            "semantic": [
-                "vendor/semantic/dist/semantic.js"
-            ]
-        },
-        "clean": true,
-        "default": false,
-        "task-dir": "tasks/build",
-        "task": {
-            "concat": true,
-            "concat-only": true,
-            "semantic": true,
-            "css": true,
-            "fonts": true
-        }
+  "build": {
+    "path": {
+      "build-name": "angular-semantic-admin",
+      "build-dir": "dist",
+      "build-fonts": "dist/fonts",
+      "src-dir": "src",
+      "src-css": "src/assets/css",
+      "src-fonts": "src/assets/fonts",
+      "src-app": "src/app",
+      "vendor-concat": [
+        "vendor/jquery/dist/jquery.js",
+        "vendor/semantic/dist/semantic.js",
+        "vendor/angular/angular.js",
+        "vendor/angular-ui-router/release/angular-ui-router.js"
+      ],
+      "vendor-fonts": [
+        "vendor/semantic/dist/themes/default/assets/fonts/*"
+      ],
+      "semantic": [
+        "vendor/semantic/dist/semantic.js"
+      ]
     },
-    "demo": {
-        "path": {
-            "build-name": "demo",
-            "build-dir": "dist-demo",
-            "build-app": "dist-demo/app",
-            "build-vendor": "dist-demo/vendor/angular-semantic-admin",
-            "src-dir": "src-demo",
-            "src-css": "src-demo/assets/css",
-            "src-app": "src-demo/app",
-            "vendor-copy": {
-                "asadmin": "dist/**/*"
-            }
-        },
-        "after": "build",
-        "clean": true,
-        "task-dir": "tasks/demo",
-        "default": true,
-        "task": {
-            "concat": true,
-            "css": true,
-            "copy": true,
-            "vendor": true
-        }
+    "clean": true,
+    "default": false,
+    "task-dir": "tasks/build",
+    "task": {
+      "concat": true,
+      "concat-only": true,
+      "semantic": true,
+      "css": true,
+      "fonts": true
     }
+  },
+  "demo": {
+    "path": {
+      "build-name": "demo",
+      "build-dir": "dist-demo",
+      "build-app": "dist-demo/app",
+      "build-vendor": "dist-demo/vendor/angular-semantic-admin",
+      "src-dir": "src-demo",
+      "src-css": "src-demo/assets/css",
+      "src-app": "src-demo/app",
+      "vendor-copy": {
+        "asadmin": "dist/**/*"
+      }
+    },
+    "after": "build",
+    "clean": true,
+    "task-dir": "tasks/demo",
+    "default": true,
+    "task": {
+      "concat": true,
+      "css": true,
+      "copy": true,
+      "vendor": true
+    }
+  }
 }

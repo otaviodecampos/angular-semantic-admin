@@ -1,0 +1,11 @@
+<a class="item" data-content="{{ item.label }}" data-variation="inverted" ng-href="{{ itemCtrl.getStateUrl(item) }}"
+   ng-click="itemCtrl.open(item); $event.stopPropagation()"
+   ui-popup="{position: 'bottom right', onShow: itemCtrl.onShowPopup}"
+   ng-class="{'open': item.open, 'active': itemCtrl.isActive(item), 'sidebar-open': item.templateUrl && item.open}"
+   ng-controller="SidebarItemController as itemCtrl" ng-repeat="item in itens">
+    <i ng-class="item.icon" class="icon"></i>
+    <span>{{ item.label }}</span>
+    <div class="ui inverted fluid icon link menu" ng-class="{horizontal: item.horizontal}" ng-if="item.itens">
+        <div ng-init="itens = item.itens; parent = item" ng-include="sidebar.sidebarItemTemplateUrl"></div>
+    </div>
+</a>

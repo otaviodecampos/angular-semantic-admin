@@ -1,8 +1,10 @@
 {
-    "navigationTitle": "Navigation",
-    "sidebar": {
-        "visible": true,
-        "open": false,
-        "itens": []
-    }
+  "navigationTitle": "Navigation",
+  "sidebar": {
+    "switchBehavior": "compact",
+    "visible": true,
+    "compact": false,
+    "open": false,
+    "itens": []
+  }
 }

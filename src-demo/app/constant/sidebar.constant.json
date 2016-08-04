@@ -1,39 +1,70 @@
 {
-    "visible": true,
-    "itens": [
+  "visible": true,
+  "itens": [
+    {
+      "label": "Workspace",
+      "icon": "dashboard",
+      "state": "demo.workspace"
+    },
+    {
+      "label": "Configurações",
+      "icon": "settings",
+      "state": "demo.settings"
+    },
+    {
+      "label": "Opção com Sidebar",
+      "icon": "plus",
+      "open": true,
+      "templateUrl": "demo/sidebar.tpl.html"
+    },
+    {
+      "label": "Opção",
+      "icon": "configure"
+    },
+    {
+      "label": "Sub Opções Horizontal",
+      "icon": "maximize",
+      "horizontal": true,
+      "itens": [
         {
-            "label": "Workspace",
-            "icon": "dashboard",
-            "state": "demo.workspace"
+          "label": "Opção 1",
+          "icon": "desktop",
+          "click": "demo.click()"
         },
         {
-            "label": "Opção com Sidebar",
-            "icon": "plus",
-            "open": true,
-            "templateUrl": "demo/sidebar.tpl.html"
+          "label": "Opção 2",
+          "icon": "tablet"
         },
         {
-            "label": "Opção",
-            "icon": "configure"
-        },
-        {
-            "label": "Sub Opções",
-            "icon": "maximize",
-            "itens": [
-                {
-                    "label": "Opção 1",
-                    "icon": "desktop",
-                    "click": "demo.click()"
-                },
-                {
-                    "label": "Opção 2",
-                    "icon": "tablet"
-                },
-                {
-                    "label": "Opção 3",
-                    "icon": "mobile"
-                }
-            ]
+          "label": "Opção 3",
+          "icon": "mobile"
         }
-    ]
+      ]
+    },
+    {
+      "label": "Sub Opções",
+      "icon": "minimize",
+      "itens": [
+        {
+          "label": "Opção 1",
+          "icon": "desktop",
+          "state": "demo.example"
+        },
+        {
+          "label": "Opção 2",
+          "icon": "tablet",
+          "state": "demo.example1"
+        },
+        {
+          "label": "Opção 3",
+          "icon": "mobile",
+          "state": "demo.example2"
+        }
+      ]
+    },
+    {
+      "label": "Opção",
+      "icon": "file text"
+    }
+  ]
 }

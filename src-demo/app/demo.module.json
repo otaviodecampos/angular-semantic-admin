@@ -1,6 +1,6 @@
 {
-    "name": "demo",
-    "dependencies": [
-        "angular-semantic-admin"
-    ]
+  "name": "demo",
+  "dependencies": [
+    "angular-semantic-admin"
+  ]
 }

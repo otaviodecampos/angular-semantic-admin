@@ -1,7 +1,7 @@
 {
-    "name": "angular-semantic-admin",
-    "dependencies": [
-        "angular-semantic-ui",
-        "ui.router"
-    ]
+  "name": "angular-semantic-admin",
+  "dependencies": [
+    "angular-semantic-ui",
+    "ui.router"
+  ]
 }

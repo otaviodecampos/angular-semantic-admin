@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     /* global angular */
     angular.module('angular-semantic-admin')
@@ -8,10 +8,16 @@
 
         $scope.Asadmin = Asadmin;
 
-        this.switchSidebar = function() {
-            Asadmin.getSidebar().toogleVisible();
-            Asadmin.getSidebar().setOpen(false);
+        this.switchSidebar = function () {
+            var behavior = Asadmin.getSidebar().getSwitchBehavior();
 
+            if (behavior == 'visible') {
+                Asadmin.getSidebar().toogleVisible();
+            } else if (behavior == 'compact') {
+                Asadmin.getSidebar().toogleCompact();
+            }
+
+            Asadmin.getSidebar().setOpen(false);
             $scope.$broadcast('switch-sidebar');
         };
     }

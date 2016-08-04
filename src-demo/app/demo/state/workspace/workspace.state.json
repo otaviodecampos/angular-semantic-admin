@@ -1,5 +1,5 @@
 {
-    "name": "demo.workspace",
-    "url": "/workspace",
-    "templateUrl": "demo/workspace.state.tpl.html"
+  "name": "demo.workspace",
+  "url": "/workspace",
+  "templateUrl": "demo/workspace.state.tpl.html"
 }

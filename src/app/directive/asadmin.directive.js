@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     angular.module('angular-semantic-admin')
         .directive('asAdmin', Directive);
@@ -10,8 +10,8 @@
             controller: 'AsadminController as asadmin',
             transclude: true,
             replace: true,
-            link: function(scope, element) {
-                 element.addClass('animate');
+            link: function (scope, element) {
+                element.addClass('animate');
             }
         }
     }
