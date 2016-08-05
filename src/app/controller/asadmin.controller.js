@@ -12,9 +12,9 @@
             var behavior = Asadmin.getSidebar().getSwitchBehavior();
 
             if (behavior == 'visible') {
-                Asadmin.getSidebar().toogleVisible();
+                Asadmin.getSidebar().toggleVisible();
             } else if (behavior == 'compact') {
-                Asadmin.getSidebar().toogleCompact();
+                Asadmin.getSidebar().toggleCompact();
             }
 
             Asadmin.getSidebar().setOpen(false);

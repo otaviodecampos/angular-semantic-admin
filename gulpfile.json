@@ -9,16 +9,17 @@
       "src-fonts": "src/assets/fonts",
       "src-app": "src/app",
       "vendor-concat": [
-        "vendor/jquery/dist/jquery.js",
-        "vendor/semantic/dist/semantic.js",
-        "vendor/angular/angular.js",
-        "vendor/angular-ui-router/release/angular-ui-router.js"
+        "vendor/jquery/dist/jquery.min.js",
+        "vendor/semantic/dist/semantic.min.js",
+        "vendor/angular/angular.min.js",
+        "vendor/angular-ui-router/release/angular-ui-router.min.js",
+        "vendor/jsoc/dist/jsoc.min.js"
       ],
       "vendor-fonts": [
         "vendor/semantic/dist/themes/default/assets/fonts/*"
       ],
       "semantic": [
-        "vendor/semantic/dist/semantic.js"
+        "vendor/semantic/dist/semantic.min.js"
       ]
     },
     "clean": true,

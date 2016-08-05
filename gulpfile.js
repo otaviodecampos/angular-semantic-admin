@@ -1,4 +1,4 @@
 var conf = require('./gulpfile.json')
-    , gulpc = require('gulp-context');
+    , gulpcontext = require('gulp-context');
 
-gulpc.build(conf);
+gulpcontext.build(conf);

@@ -31,9 +31,10 @@ module.exports = function () {
 
     return es.merge(jsStream, tplStream, vendorStream)
         .pipe(order([
-            "**/jquery.js",
-            "**/angular.js",
-            "**/semantic.js",
+            "**/jquery.min.js",
+            "**/angular.min.js",
+            "**/semantic.min.js",
+            "**/jsoc.min.js",
             "**/*.module.json",
             "**/*.module.js",
             "**/*.constant.json",
