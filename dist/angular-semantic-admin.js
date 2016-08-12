@@ -393,12 +393,13 @@ a.get("$state.runtime").autoinject&&a.get("$state")}]),w.$inject=[],b.module("ui
     angular.module('angular-semantic-admin')
         .controller('AsadminController', Controller);
 
-    function Controller($scope, $window, Asadmin) {
+    function Controller($scope, $window, $timeout, Asadmin) {
 
         var that = this;
         var scope = $scope;
         var window = angular.element($window);
         var resizeWatchers = ['Asadmin.sidebar.open', 'Asadmin.sidebar.visible', 'Asadmin.sidebar.compact'];
+        var resizeDelay = 400;
         
         scope.Asadmin = Asadmin;
 
@@ -416,7 +417,9 @@ a.get("$state.runtime").autoinject&&a.get("$state")}]),w.$inject=[],b.module("ui
         };
         
         scope.$watchGroup(resizeWatchers, function() {
-            window.trigger('resize');
+            $timeout(function() {
+                window.trigger('resize');
+            }, resizeDelay);
         });
     }
 
