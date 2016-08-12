@@ -27,7 +27,7 @@
         };
         
         scope.$watchGroup(resizeWatchers, function() {
-           window.trigger('resize');
+            window.trigger('resize');
         });
     }
 

@@ -65,9 +65,14 @@
     angular.module('angular-semantic-admin')
         .controller('AsadminController', Controller);
 
-    function Controller($scope, Asadmin) {
+    function Controller($scope, $window, Asadmin) {
 
-        $scope.Asadmin = Asadmin;
+        var that = this;
+        var scope = $scope;
+        var window = angular.element($window);
+        var resizeWatchers = ['Asadmin.sidebar.open', 'Asadmin.sidebar.visible', 'Asadmin.sidebar.compact'];
+        
+        scope.Asadmin = Asadmin;
 
         this.switchSidebar = function () {
             var behavior = Asadmin.getSidebar().getSwitchBehavior();
@@ -81,6 +86,10 @@
             Asadmin.getSidebar().setOpen(false);
             $scope.$broadcast('switch-sidebar');
         };
+        
+        scope.$watchGroup(resizeWatchers, function() {
+            window.trigger('resize');
+        });
     }
 
 })();
@@ -271,8 +280,8 @@
     }
 
 })();
-angular.module("angular-semantic-admin").run(["$templateCache", function($templateCache) {$templateCache.put("angular-semantic-admin/asadmin.tpl.html","<div class=\"asadmin\"\r\n     ng-class=\"{\'sidebar-behavior-visible\': Asadmin.sidebar.switchBehavior == \'visible\', \'sidebar-compact\': Asadmin.sidebar.compact, \'sidebar-visible\': Asadmin.sidebar.visible, \'sidebar-open\': Asadmin.sidebar.open}\">\r\n    <asadmin-sidebar></asadmin-sidebar>\r\n    <asadmin-navbar></asadmin-navbar>\r\n    <div class=\"asadmin-content\" ng-transclude></div>\r\n</div>");
-$templateCache.put("angular-semantic-admin/navbar.tpl.html","<div class=\"asadmin-navbar ui inverted menu\">\r\n    <div ng-click=\"asadmin.switchSidebar()\" class=\"sidebar-switch\"></div>\r\n    {{ Asadmin.navigationTitle }}\r\n</div>");
-$templateCache.put("angular-semantic-admin/sidebar-item.tpl.html","<a class=\"item\" data-content=\"{{ item.label }}\" data-variation=\"inverted\" ng-href=\"{{ itemCtrl.getStateUrl(item) }}\"\r\n   ng-click=\"itemCtrl.open(item); $event.stopPropagation()\"\r\n   ui-popup=\"{position: \'bottom right\', onShow: itemCtrl.onShowPopup}\"\r\n   ng-class=\"{\'open\': item.open, \'active\': itemCtrl.isActive(item), \'sidebar-open\': item.templateUrl && item.open}\"\r\n   ng-controller=\"SidebarItemController as itemCtrl\" ng-repeat=\"item in itens\">\r\n    <i ng-class=\"item.icon\" class=\"icon\"></i>\r\n    <span>{{ item.label }}</span>\r\n    <div class=\"ui inverted fluid icon link menu\" ng-class=\"{horizontal: item.horizontal}\" ng-if=\"item.itens\">\r\n        <div ng-init=\"itens = item.itens; parent = item\" ng-include=\"sidebar.sidebarItemTemplateUrl\"></div>\r\n    </div>\r\n</a>");
+angular.module("angular-semantic-admin").run(["$templateCache", function($templateCache) {$templateCache.put("angular-semantic-admin/asadmin.tpl.html","<div class=\"asadmin\"\n     ng-class=\"{\'sidebar-behavior-visible\': Asadmin.sidebar.switchBehavior == \'visible\', \'sidebar-compact\': Asadmin.sidebar.compact, \'sidebar-visible\': Asadmin.sidebar.visible, \'sidebar-open\': Asadmin.sidebar.open}\">\n    <asadmin-sidebar></asadmin-sidebar>\n    <asadmin-navbar></asadmin-navbar>\n    <div class=\"asadmin-content\" ng-transclude></div>\n</div>");
+$templateCache.put("angular-semantic-admin/navbar.tpl.html","<div class=\"asadmin-navbar ui inverted menu\">\n    <div ng-click=\"asadmin.switchSidebar()\" class=\"sidebar-switch\"></div>\n    {{ Asadmin.navigationTitle }}\n</div>");
+$templateCache.put("angular-semantic-admin/sidebar-item.tpl.html","<a class=\"item\" data-content=\"{{ item.label }}\" data-variation=\"inverted\" ng-href=\"{{ itemCtrl.getStateUrl(item) }}\"\n   ng-click=\"itemCtrl.open(item); $event.stopPropagation()\"\n   ui-popup=\"{position: \'bottom right\', onShow: itemCtrl.onShowPopup}\"\n   ng-class=\"{\'open\': item.open, \'active\': itemCtrl.isActive(item), \'sidebar-open\': item.templateUrl && item.open}\"\n   ng-controller=\"SidebarItemController as itemCtrl\" ng-repeat=\"item in itens\">\n    <i ng-class=\"item.icon\" class=\"icon\"></i>\n    <span>{{ item.label }}</span>\n    <div class=\"ui inverted fluid icon link menu\" ng-class=\"{horizontal: item.horizontal}\" ng-if=\"item.itens\">\n        <div ng-init=\"itens = item.itens; parent = item\" ng-include=\"sidebar.sidebarItemTemplateUrl\"></div>\n    </div>\n</a>");
 $templateCache.put("angular-semantic-admin/sidebar-template.tpl.html","sidebar-template.tpl.html");
-$templateCache.put("angular-semantic-admin/sidebar.tpl.html","<div class=\"asadmin-sidebar\">\r\n    <div class=\"ui inverted fluid visible vertical sidebar static icon menu\" ng-init=\"itens = sidebar.itens\"\r\n         ng-include=\"sidebar.sidebarItemTemplateUrl\"></div>\r\n    <div class=\"asadmin-sidebar-open\">\r\n        <div ng-include=\"sidebar.sidebarTemplateUrl\"></div>\r\n    </div>\r\n</div>");}]);
+$templateCache.put("angular-semantic-admin/sidebar.tpl.html","<div class=\"asadmin-sidebar\">\n    <div class=\"ui inverted fluid visible vertical sidebar static icon menu\" ng-init=\"itens = sidebar.itens\"\n         ng-include=\"sidebar.sidebarItemTemplateUrl\"></div>\n    <div class=\"asadmin-sidebar-open\">\n        <div ng-include=\"sidebar.sidebarTemplateUrl\"></div>\n    </div>\n</div>");}]);
