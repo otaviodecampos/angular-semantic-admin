@@ -11,20 +11,21 @@
         var window = angular.element($window);
         var resizeWatchers = ['Asadmin.sidebar.open', 'Asadmin.sidebar.visible', 'Asadmin.sidebar.compact'];
         var resizeDelay = 400;
-        
+        var sidebar = Asadmin.getSidebar();
+
         scope.Asadmin = Asadmin;
 
-        this.switchSidebar = function () {
-            var behavior = Asadmin.getSidebar().getSwitchBehavior();
+        that.switchSidebar = function () {
+            var behavior = sidebar.getSwitchBehavior();
 
             if (behavior == 'visible') {
-                Asadmin.getSidebar().toggleVisible();
+                sidebar.toggleVisible();
             } else if (behavior == 'compact') {
-                Asadmin.getSidebar().toggleCompact();
+                sidebar.toggleCompact();
             }
 
-            Asadmin.getSidebar().setOpen(false);
-            $scope.$broadcast('switch-sidebar');
+            sidebar.setOpen(false);
+            scope.$broadcast('switch-sidebar');
         };
         
         scope.$watchGroup(resizeWatchers, function() {
