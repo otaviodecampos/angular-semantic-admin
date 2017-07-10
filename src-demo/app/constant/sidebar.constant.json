@@ -1,5 +1,6 @@
 {
   "visible": true,
+  "switch-behavior": "visible",
   "itens": [
     {
       "label": "Workspace",
